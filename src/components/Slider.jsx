@@ -34,19 +34,32 @@ const Wrapper = styled.div`
 `
 
 const Slide = styled.div`
+width: 100vw;
+height:100vh;
 display:flex;
 align-items: center;
 `;
 
 const ImgContainer = styled.div`
+height:100%;
 flex:1;
 `;
 
 const Image = styled.img`
+height:80%;
 `
 const InfoContainer = styled.div`
 flex:1;
+padding: 50px;
 `;
+
+const Title = styled.h1`
+font-size: 70px;
+`;
+const Desc = styled.p`
+margin:50px
+`;
+const Button = styled.button``
 
 
 const Slider = () => {
@@ -58,9 +71,14 @@ const Slider = () => {
       <Wrapper>
           <Slide>
               
-          </Slide>
+         
         <ImgContainer><Image src="https://i.ibb.co/XsdmR2c/1.png" /></ImgContainer>
-        <InfoContainer></InfoContainer>
+        <InfoContainer>
+            <Title>Summer Sale</Title>
+            <Desc>Dont comprimise</Desc>
+            <Button>Show Now!</Button>
+        </InfoContainer>
+        </Slide>
       </Wrapper>
       <Arrow direction="right">
         <ArrowRightOutlined />
