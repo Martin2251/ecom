@@ -8,6 +8,7 @@ const Container = styled.div`
   display: flex;
   background-color: coral;
   position: relative;
+  overflow:hidden;
 `;
 
 const Arrow = styled.div`
@@ -31,7 +32,8 @@ opacity: 0.5;
 
 const Wrapper = styled.div`
     height:100%;
-`
+display:flex;
+`;
 
 const Slide = styled.div`
 width: 100vw;
@@ -57,9 +59,18 @@ const Title = styled.h1`
 font-size: 70px;
 `;
 const Desc = styled.p`
-margin:50px
+margin:50px 0px;
+font-size: 20px;
+font-weight: 500;
+letter-spacing: 3px;
+background-colr: ${props=>props.bg};
 `;
-const Button = styled.button``
+const Button = styled.button`
+padding: 10px;
+font-size:20px;
+background-color: transparent;
+cursor:pointer;
+`;
 
 
 const Slider = () => {
@@ -69,12 +80,26 @@ const Slider = () => {
         <ArrowLeftOutlined />
       </Arrow>
       <Wrapper>
-          <Slide>
-              
-         
+          <Slide bg="#f5fafd">
         <ImgContainer><Image src="https://i.ibb.co/XsdmR2c/1.png" /></ImgContainer>
         <InfoContainer>
             <Title>Summer Sale</Title>
+            <Desc>Dont comprimise</Desc>
+            <Button>Show Now!</Button>
+        </InfoContainer>
+        </Slide>
+        <Slide bg="#fcf1ed">
+        <ImgContainer><Image src="https://i.ibb.co/XsdmR2c/1.png" /></ImgContainer>
+        <InfoContainer>
+            <Title>Winter Sale</Title>
+            <Desc>Dont comprimise</Desc>
+            <Button>Show Now!</Button>
+        </InfoContainer>
+        </Slide>
+        <Slide bg="#fbf0f4">
+        <ImgContainer><Image src="https://i.ibb.co/XsdmR2c/1.png" /></ImgContainer>
+        <InfoContainer>
+            <Title>Popular Sale</Title>
             <Desc>Dont comprimise</Desc>
             <Button>Show Now!</Button>
         </InfoContainer>
