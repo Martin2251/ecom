@@ -1,6 +1,7 @@
 import { ArrowLeftOutlined, ArrowRightOutlined } from "@material-ui/icons";
-import React from "react";
+import React, {useState} from "react";
 import styled from "styled-components";
+import { sliderItems } from "../data";
 
 const Container = styled.div`
   width: 100%;
@@ -27,12 +28,14 @@ right:${(props) => props.direction === "right" && "10px"}
 margin:auto;
 cursor: pointer;
 opacity: 0.5;
+z-index:2;
 
 `;
 
 const Wrapper = styled.div`
     height:100%;
 display:flex;
+transform:translateX(0vw);
 `;
 
 const Slide = styled.div`
@@ -74,38 +77,36 @@ cursor:pointer;
 
 
 const Slider = () => {
+    const [slideIndex, setSlideIndex] =useState(0)
+
+    const handleClick = (direction) => {
+        if(direction==="left"){
+            setSlideIndex(slideIndex > 0 ? slideIndex-1 : 2)
+        }else {
+            setSlideIndex(slideIndex < 2 ? slideIndex +1:0)
+        }
+
+    };
   return (
     <Container>
-      <Arrow direction="left">
+      <Arrow direction="left" onClick={() =>handleClick("left")}>
         <ArrowLeftOutlined />
       </Arrow>
       <Wrapper>
-          <Slide bg="#f5fafd">
-        <ImgContainer><Image src="https://i.ibb.co/XsdmR2c/1.png" /></ImgContainer>
+          {sliderItems.map(item=>(
+
+        
+        <Slide bg={item.bg}>
+        <ImgContainer><Image src={item.img} /></ImgContainer>
         <InfoContainer>
-            <Title>Summer Sale</Title>
-            <Desc>Dont comprimise</Desc>
+            <Title>{item.title}</Title>
+            <Desc>{item.desc}</Desc>
             <Button>Show Now!</Button>
         </InfoContainer>
         </Slide>
-        <Slide bg="#fcf1ed">
-        <ImgContainer><Image src="https://i.ibb.co/XsdmR2c/1.png" /></ImgContainer>
-        <InfoContainer>
-            <Title>Winter Sale</Title>
-            <Desc>Dont comprimise</Desc>
-            <Button>Show Now!</Button>
-        </InfoContainer>
-        </Slide>
-        <Slide bg="#fbf0f4">
-        <ImgContainer><Image src="https://i.ibb.co/XsdmR2c/1.png" /></ImgContainer>
-        <InfoContainer>
-            <Title>Popular Sale</Title>
-            <Desc>Dont comprimise</Desc>
-            <Button>Show Now!</Button>
-        </InfoContainer>
-        </Slide>
+   ))}
       </Wrapper>
-      <Arrow direction="right">
+      <Arrow direction="right" onClick={() =>handleClick("right")}>
         <ArrowRightOutlined />
       </Arrow>
     </Container>
